@@ -95,7 +95,7 @@ public class SubCategoryServiceImpl implements SubCatelogService {
 
 	@Override
 	public boolean deletesubCategory(String categoryName, String subCategoryName) {
-		logger.info("inside deletesubCategory method");
+		logger.info("inside deletesubCategory=== method");
 		boolean check = false;
 		Category category = catelogRepository.findByCategoryName(categoryName);
 		if (Objects.nonNull(category)) {
