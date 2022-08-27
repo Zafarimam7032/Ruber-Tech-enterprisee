@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.catelog.api.SubCategoryApi;
 import com.catelog.model.Category;
 import com.catelog.model.SubCategory;
 import com.catelog.service.impl.SubCategoryServiceImpl;

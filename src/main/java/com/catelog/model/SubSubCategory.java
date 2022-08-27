@@ -1,5 +1,6 @@
 package com.catelog.model;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -13,6 +14,7 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -26,20 +28,19 @@ public class SubSubCategory {
 	private long id;
 	
 	@JsonProperty(value = "subSubCategoryName")
-//	@Min(value = 3,message = "sub sub Category name should not be lesser then 3 charetor")
-//	@Max(value = 9,message = "sub sub category name should not be greater then 9 charetor long ")
+	@Size(min = 3 ,max = 20, message = "subSubCategoryName range will be 3 to 20")
 	private String subSubCategoryName;
 	
 	@Column(name = "Date")
 	@NotNull
-	private Date date;
+	private LocalDate date;
 	
 	@Column(name = "Desription")
-	@NotNull
+	@Size(min = 3 ,max = 30, message = "subSubCategoryName range will be 3 to 30")
 	private String description;
 	
 	@Column(name = "User_Name")
-	@NotNull
+	@Size(min = 3 ,max = 20, message = "userName range will be 3 to 20")
 	private String userName;
 	
 	public long getId() {
@@ -58,11 +59,11 @@ public class SubSubCategory {
 		this.subSubCategoryName = subSubCategoryName;
 	}
 
-	public Date getDate() {
+	public LocalDate getDate() {
 		return date;
 	}
 
-	public void setDate(Date date) {
+	public void setDate(LocalDate date) {
 		this.date = date;
 	}
 

@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "SoftCategoryInfo")
@@ -16,6 +17,7 @@ public class SoftCategoryInfo {
 	private long id;
 	
 	@Column(name = "categoryName")
+	@Size(min = 3,max = 10,message = "category Name range should be 3 to 10")
 	private String categoryName;
 
 	public String getCategoryName() {

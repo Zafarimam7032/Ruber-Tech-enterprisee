@@ -1,4 +1,4 @@
-package com.catelog.controller;
+package com.catelog.api;
 
 import java.util.List;
 

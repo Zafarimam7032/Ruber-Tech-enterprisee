@@ -1,5 +1,6 @@
 package com.catelog.soft.model;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
@@ -17,6 +18,7 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "Soft_Sub_Sub_Category")
@@ -25,17 +27,16 @@ public class SoftSubSubCategory {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	@Column(name = "Sub_Sub_Category_Name")
-//	@Min(value = 3,message = "sub sub Category name should not be lesser then 3 charetor")
-//	@Max(value = 9,message = "sub sub category name should not be greater then 9 charetor long ")
+	@Size(min = 3,max = 20,message = "subSubCategoryName  range should be 3 to 20")
 	private String subSubCategoryName;
 	@Column(name = "Date")
 	@NotNull
-	private Date date;
+	private LocalDate date;
 	@Column(name = "Desription")
-	@NotNull
+	@Size(min = 3,max = 30,message = "description  range should be 3 to 30")
 	private String description;
 	@Column(name = "User_Name")
-	@NotNull
+	@Size(min = 3,max = 20,message = "userName  range should be 3 to 20")
 	private String userName;
 
 	@ManyToOne(targetEntity =SoftCategoryInfo.class,cascade = CascadeType.ALL,fetch = FetchType.EAGER,optional = false)
@@ -88,11 +89,11 @@ public class SoftSubSubCategory {
 		this.subSubCategoryName = subSubCategoryName;
 	}
 
-	public Date getDate() {
+	public LocalDate getDate() {
 		return date;
 	}
 
-	public void setDate(Date date) {
+	public void setDate(LocalDate date) {
 		this.date = date;
 	}
 
