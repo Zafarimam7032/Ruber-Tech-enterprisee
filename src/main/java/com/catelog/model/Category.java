@@ -1,5 +1,6 @@
 package com.catelog.model;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -18,6 +19,7 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -30,16 +32,16 @@ public class Category {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	@Column(name = "Category_Name")
-	//@Min(value = 4, message = "category name should not be lesser then 4 charector")
-	//@Max(value = 10, message = "category Name should not be greater then 10 charector")
+	@Size(min = 3,max = 10,message = "category Name range should be 3 to 10")
 	private String categoryName;
 	@Column(name = "Description")
+	@Size(min = 3,max = 30,message = "category description range should be 3 to 10")
 	private String description;
 	@Column(name = "Date")
-	@Temporal(TemporalType.TIMESTAMP)
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss")
-	private Date date;
+	@NotEmpty
+	private LocalDate date;
 	@Column(name = "User_Name")
+	@Size(min = 3,max = 10,message = "user Name range should be 3 to 10")
 	private String userName;
 	@OneToMany(targetEntity = SubCategory.class,cascade = CascadeType.MERGE,fetch = FetchType.LAZY)
 	private List<SubCategory> subCategories;
@@ -76,11 +78,11 @@ public class Category {
 		this.description = description;
 	}
 
-	public Date getDate() {
+	public LocalDate getDate() {
 		return date;
 	}
 
-	public void setDate(Date date) {
+	public void setDate(LocalDate date) {
 		this.date = date;
 	}
 
